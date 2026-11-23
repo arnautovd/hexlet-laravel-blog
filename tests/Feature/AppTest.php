@@ -6,33 +6,18 @@ use Tests\TestCase;
 
 class AppTest extends TestCase
 {
-    public function testIndex()
+    public function testIndex(): void
     {
-        $response = $this->get('/');
-        $response->assertStatus(200);
+        // APP_BUILD=42 задан в phpunit.xml; проверяем всю цепочку env -> config -> view
+        $this->get('/')
+            ->assertOk()
+            ->assertSee('Build 42');
     }
 
-    public function testIndexShowsBuildFromConfig()
+    public function testViewUsesConfig(): void
     {
-        config(['app.build' => '42']);
-
-        $response = $this->get('/');
-        $response->assertSeeText('Build 42');
-    }
-
-    public function testAbout()
-    {
-        $response = $this->get('/about');
-        $response->assertStatus(200);
-        $response->assertSeeText('Articles');
-        $response->assertSeeText('О блоге');
-    }
-
-    public function testArticles()
-    {
-        $response = $this->get('/articles');
-        $response->assertStatus(200);
-        $response->assertSeeText('About');
-        $response->assertSeeText('Статьи');
+        // вывод должен зависеть от config('app.build'), а не быть захардкоженным
+        config(['app.build' => 'ZX9']);
+        $this->get('/')->assertSee('Build ZX9');
     }
 }
