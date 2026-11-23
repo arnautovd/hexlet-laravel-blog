@@ -9,11 +9,16 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        <div class="container mt-4">
+        <div class="container mx-auto mt-4 px-4">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/articles">Articles</a>
+            <!-- BEGIN (write your solution here) -->
             <h1>@yield('header')</h1>
             <div>
                 @yield('content')
             </div>
+            <!-- END -->
         </div>
     </body>
 </html>
