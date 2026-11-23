@@ -4,7 +4,10 @@ use App\Http\Controllers\ContactsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $connection = config('database.default');
+    $dbName = config("database.connections.{$connection}.database");
+
+    return view('welcome', ['dbName' => $dbName]);
 });
 
 // BEGIN (write your solution here)
