@@ -10,6 +10,21 @@
         <div class="container mx-auto mt-4 px-4">
             <!-- BEGIN (write your solution here) -->
             <h1>Статьи</h1>
+
+            @if (empty($articles))
+                <p>Статей пока нет</p>
+            @else
+                <ul>
+                    @foreach ($articles as $article)
+                        <li>
+                            {{ $article['title'] }}
+                            @if ($loop->first)
+                                <span>Свежая</span>
+                            @endif
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
             <!-- END -->
         </div>
     </body>

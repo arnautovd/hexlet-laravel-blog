@@ -9,7 +9,15 @@ Route::get('/', function () {
 
 // BEGIN (write your solution here)
 Route::view('/about', 'about');
-Route::view('/articles', 'articles');
+Route::get('/articles', function () {
+    $articles = [
+        ['id' => 1, 'title' => 'Первая статья о Laravel'],
+        ['id' => 2, 'title' => 'Маршруты и контроллеры'],
+        ['id' => 3, 'title' => 'Шаблоны Blade'],
+    ];
+
+    return view('articles', ['articles' => $articles]);
+})->name('articles');
 
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts');
 Route::get('/contacts/email', [ContactsController::class, 'email'])->name('contacts.email');
