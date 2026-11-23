@@ -15,6 +15,10 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    // BEGIN (write your solution here)
+    'build' => env('APP_BUILD', 'unknown'),
+    // END
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -27,17 +31,6 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Build
-    |--------------------------------------------------------------------------
-    |
-    | Build number passed in by the environment (APP_BUILD).
-    |
-    */
-
-    'build' => env('APP_BUILD', 'unknown'),
 
     /*
     |--------------------------------------------------------------------------
