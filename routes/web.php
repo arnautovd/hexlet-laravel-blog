@@ -8,7 +8,15 @@ Route::get('/', function () {
 });
 
 // BEGIN (write your solution here)
-Route::view('/about', 'about');
+$team = [
+    ['name' => 'Hodor', 'position' => 'programmer'],
+    ['name' => 'Joker', 'position' => 'CEO'],
+    ['name' => 'Elvis', 'position' => 'CTO'],
+];
+
+Route::get('about', function () use ($team) {
+    return view('about', ['team' => $team]);
+});
 Route::get('/articles', function () {
     $articles = [
         ['id' => 1, 'title' => 'Первая статья о Laravel'],
