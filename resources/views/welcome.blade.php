@@ -11,6 +11,7 @@
             <!-- BEGIN (write your solution here) -->
             <a href="/about">О блоге</a>
             <a href="/articles">Статьи</a>
+            <p>Build {{ config('app.build') }}</p>
             <!-- END -->
         </div>
     </body>

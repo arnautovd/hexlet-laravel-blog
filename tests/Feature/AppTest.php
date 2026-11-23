@@ -12,6 +12,14 @@ class AppTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function testIndexShowsBuildFromConfig()
+    {
+        config(['app.build' => '42']);
+
+        $response = $this->get('/');
+        $response->assertSeeText('Build 42');
+    }
+
     public function testAbout()
     {
         $response = $this->get('/about');
